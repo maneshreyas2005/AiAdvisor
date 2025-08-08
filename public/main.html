@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Buddy - Your Personal AI Career Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</head>
+
+<body class="min-h-screen gradient-bg">
+    <!-- Navigation -->
+    <nav class="bg-white/10 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-2xl">🤖</span>
+                    </div>
+                    <span class="text-white font-bold text-xl">AI Career Buddy</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#"
+                        class="text-white/90 hover:text-white transition-colors duration-200 font-medium">Home</a>
+                    <a href="#"
+                        class="text-white/90 hover:text-white transition-colors duration-200 font-medium">Features</a>
+                    <a href="#"
+                        class="text-white/90 hover:text-white transition-colors duration-200 font-medium">About</a>
+                    <a href="#"
+                        class="text-white/90 hover:text-white transition-colors duration-200 font-medium">Contact</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-white p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 fade-in">
+                Your Personal AI Career Guide 🚀
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-8 fade-in">
+                Get expert advice on jobs, skills, and your future – in seconds. ✨
+            </p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <div class="mb-6">
+                <label for="career-question" class="block text-gray-700 text-lg font-semibold mb-3">
+                    What's on your career mind? 💭
+                </label>
+                <div class="relative">
+                    <input type="text" id="career-question" placeholder="How do I become a data analyst?"
+                        class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-purple-500 focus:outline-none transition-colors duration-200 shadow-sm">
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <span class="text-2xl">💡</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="askBuddy()"
+                class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-2xl text-lg button-glow">
+                Ask Buddy 🤖
+            </button>
+        </div>
+
+        <!-- Response Area -->
+        <div id="response-area" class="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 card-hover"
+            style="display: none;">
+            <div class="flex items-center mb-4">
+                <div
+                    class="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                    <span class="text-white text-xl">🤖</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Buddy's Advice</h3>
+            </div>
+            <div id="response-content" class="text-gray-700 leading-relaxed"></div>
+        </div>
+
+        <!-- Sample Questions -->
+        <div class="mt-12 text-center">
+            <h3 class="text-white text-xl font-semibold mb-6">Try asking about:</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <button onclick="fillQuestion('How do I switch careers to tech?')"
+                    class="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl hover:bg-white/30 transition-all duration-200 card-hover">
+                    💻 Career Switching
+                </button>
+                <button onclick="fillQuestion('What skills do I need for marketing?')"
+                    class="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl hover:bg-white/30 transition-all duration-200 card-hover">
+                    📈 Skill Development
+                </button>
+                <button onclick="fillQuestion('How to prepare for job interviews?')"
+                    class="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl hover:bg-white/30 transition-all duration-200 card-hover">
+                    🎯 Interview Prep
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/10 backdrop-blur-md border-t border-white/20 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="text-2xl">🤖</span>
+                    <span class="text-white font-bold">AI Career Buddy</span>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">About</a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">Privacy Policy</a>
+                    <a href="#" class="text-white/80 hover:text-white transition-colors duration-200">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="text-center mt-6 pt-6 border-t border-white/20">
+                <p class="text-white/70">© 2024 AI Career Buddy. Empowering careers with AI ✨</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script src="main.js"></script>
+
+</html>
