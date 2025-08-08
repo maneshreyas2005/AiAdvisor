@@ -15,7 +15,7 @@ app.use(cors());
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent';
 // const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 // const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent';
-const GEMINI_API_KEY = AIzaSyA-YZeT4AhKRKxPEhmaIzFo_b_3iQH6EdI;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 // function cleanText(text) {
 //   return text
@@ -87,4 +87,5 @@ Example of desired response format:
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
